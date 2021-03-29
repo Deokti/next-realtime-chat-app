@@ -12,7 +12,7 @@ type TButton = {
   fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | number
   borderRadius?: number
   onClick?: () => {}
-  type: 'button' | 'submit',
+  type?: 'button' | 'submit',
   isLoading?: boolean
   LoadingIcon?: JSX.Element | null | Function
 }
