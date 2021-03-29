@@ -1,4 +1,5 @@
-import { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
+import AuthError from '../AuthError';
 
 import styles from './AuthInput.module.scss';
 
@@ -17,10 +18,11 @@ type TAuthInput = {
   onChange?: (value: ChangeEvent<HTMLInputElement>) => any
   value?: string
   type?: "text" | "password"
+  error?: string
 }
 
 
-function AuthInput({ placeholder, name, onChange, value, type = 'text' }: TAuthInput) {
+function AuthInput({ placeholder, name, onChange, value, type = 'text', error }: TAuthInput) {
   const [emptyValue, setEmptyValue] = useState<boolean>(false);
 
   function onEmptyValue({ currentTarget }: ChangeEvent<HTMLInputElement>): void {
@@ -41,6 +43,7 @@ function AuthInput({ placeholder, name, onChange, value, type = 'text' }: TAuthI
         value={value}
       />
       <span className={`${styles.span} ${emptyValue && styles.active}`}>{placeholder}</span>
+      {error && <AuthError>{error}</AuthError>}
     </label>
   )
 }

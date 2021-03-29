@@ -5,17 +5,17 @@ import AuthRedirect from "../../components/AuthRedirect";
 import Button from "../../components/Button";
 import HeadTitle from "../../components/HeadTitle";
 import { PATH } from "../../config/path";
+
 import { useFormik, FormikHelpers } from 'formik';
+import * as yup from 'yup';
 
 import { PulseLoader } from 'react-spinners';
-
-
 
 interface IinitialValues {
   username: string
   email: string
   password: string
-  passwordRereat: string
+  passwordConfirm: string
 }
 
 
@@ -26,15 +26,25 @@ function Register() {
       username: '',
       email: '',
       password: '',
-      passwordRereat: ''
+      passwordConfirm: ''
     },
+    validationSchema: validationSchema(),
     onSubmit: onSubmit
   });
 
+  function validationSchema() {
+    return yup.object().shape({
+      username: yup.string().required('Поле должно быть заполнено!'),
+      email: yup.string().email('Не корректный Email адресс!').required('Поле должно быть заполнено!'),
+      password: yup.string().min(6, 'Пароль должен содержать не менее 6 символов').required('Поле должно быть заполнено!'),
+      passwordConfirm: yup.string().oneOf([yup.ref('password')], 'Пароли не совпадают!').required('Поле должно быть заполнено!')
+    })
+  }
+
   function onSubmit(values: IinitialValues, actions: FormikHelpers<IinitialValues>) {
     console.log(values);
-
   }
+
 
   return (
     <Fragment>
@@ -46,12 +56,14 @@ function Register() {
           name="username"
           value={formik.values.username}
           onChange={formik.handleChange}
+          error={formik.errors.username}
         />
         <AuthInput
           placeholder="Email"
           name="email"
           value={formik.values.email}
           onChange={formik.handleChange}
+          error={formik.errors.email}
         />
         <AuthInput
           placeholder="Пароль"
@@ -59,13 +71,15 @@ function Register() {
           name="password"
           value={formik.values.password}
           onChange={formik.handleChange}
+          error={formik.errors.password}
         />
         <AuthInput
           placeholder="Повторите пароль"
           type="password"
-          name="passwordRereat"
-          value={formik.values.passwordRereat}
+          name="passwordConfirm"
+          value={formik.values.passwordConfirm}
           onChange={formik.handleChange}
+          error={formik.errors.passwordConfirm}
         />
 
         <Button
@@ -74,6 +88,7 @@ function Register() {
           type="submit"
           backgroundColor="#ff4460"
           width="100%"
+          disabled={!formik.dirty || !formik.isValid}
           height={40}
           borderRadius={4}
         >

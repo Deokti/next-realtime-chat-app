@@ -1,0 +1,11 @@
+@import '../../styles/colors.scss';
+
+.error {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  display: block;
+  font-weight: 300;
+  font-size: 11px;
+  color: $color-red;
+}
