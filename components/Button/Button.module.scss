@@ -12,7 +12,8 @@
   align-items: center;
 }
 
-.isLoading {
+.isLoading,
+.disabled {
   pointer-events: none;
   opacity: .6;
 }

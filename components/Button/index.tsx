@@ -15,6 +15,7 @@ type TButton = {
   type?: 'button' | 'submit',
   isLoading?: boolean
   LoadingIcon?: JSX.Element | null | Function
+  disabled?: boolean
 }
 
 function Button({
@@ -32,13 +33,14 @@ function Button({
   onClick,
   LoadingIcon,
   isLoading = false,
+  disabled = false
 }: TButton) {
 
   const getLoadingIconByType = LoadingIcon === Function ? <LoadingIcon /> : LoadingIcon;
 
   return (
     <button
-      className={`${styles.button} ${isLoading && styles.isLoading}`}
+      className={`${styles.button} ${isLoading && styles.isLoading} ${disabled && styles.disabled}`}
       type={type}
       style={
         {

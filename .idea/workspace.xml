@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="526f5a4f-114e-4b82-bdc8-ecf626634862" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/KAIN.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/react-next-realtime-chat-app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +35,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.spelling" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="D:\_MyProject\react-projects\react-next-realtime-chat-app\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -56,7 +48,8 @@
       <option name="presentableId" value="Default" />
       <updated>1617017763250</updated>
       <workItem from="1617017767036" duration="1175000" />
-      <workItem from="1617019001499" duration="1582000" />
+      <workItem from="1617019001499" duration="2051000" />
+      <workItem from="1617021091847" duration="97000" />
     </task>
     <servers />
   </component>
@@ -68,9 +61,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="747" y="245" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1617019551327" />
-    <state x="151" y="149" width="1633" height="711" key="SettingsEditor" timestamp="1617019609166">
+    <state x="151" y="149" width="1633" height="711" key="SettingsEditor" timestamp="1617021070441">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="151" y="149" width="1633" height="711" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1617019609166" />
+    <state x="151" y="149" width="1633" height="711" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1617021070441" />
   </component>
 </project>
