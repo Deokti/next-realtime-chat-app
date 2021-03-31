@@ -43,7 +43,17 @@ function AuthInput({ placeholder, name, onChange, value, type = 'text', error }:
         value={value}
       />
       <span className={`${styles.span} ${emptyValue && styles.active}`}>{placeholder}</span>
-      {error && <AuthError>{error}</AuthError>}
+      {error && (
+        <AuthError
+          fontSize={11}
+          fontWeight={300}
+          position="absolute"
+          left={0}
+          bottom={-20}
+        >
+          {error}
+        </AuthError>
+      )}
     </label>
   )
 }

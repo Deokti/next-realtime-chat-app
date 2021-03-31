@@ -1,13 +1,33 @@
 import React from 'react';
 
-import styles from './AuthError.module.scss';
-
 interface IAuthError {
   children?: string
+  fontWeight?: 100 | 300 | 400 | 500 | 600 | 700 | 900
+  fontSize?: number
+  color?: string
+  display?: 'block' | 'inline' | 'flex' | 'inline-block'
+  textAlign?: 'left' | 'center' | 'right'
+  position?: 'relative' | 'absolute',
+  left?: number,
+  right?: number,
+  top?: number,
+  bottom?: number,
 }
 
-function AuthError({ children }: IAuthError): React.ReactElement<IAuthError> {
-  return <span className={styles.error}>{children}</span>
+function AuthError({ children, fontWeight, fontSize, color = '#ff4460', display = 'block', textAlign = 'left' }: IAuthError): React.ReactElement<IAuthError> {
+  return (
+    <span
+      style={{
+        fontWeight,
+        fontSize,
+        color,
+        display,
+        textAlign
+      }}
+    >
+      {children}
+    </span>
+  )
 }
 
 export default AuthError;
