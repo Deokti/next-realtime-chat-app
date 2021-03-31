@@ -18,19 +18,22 @@ interface IinitialValues {
   passwordConfirm: string
 }
 
-
 function Register() {
 
   const formik = useFormik({
-    initialValues: {
+    initialValues: initialValues(),
+    validationSchema: validationSchema(),
+    onSubmit: onSubmit
+  });
+
+  function initialValues(): IinitialValues {
+    return {
       username: '',
       email: '',
       password: '',
       passwordConfirm: ''
-    },
-    validationSchema: validationSchema(),
-    onSubmit: onSubmit
-  });
+    }
+  }
 
   function validationSchema() {
     return yup.object().shape({
@@ -44,7 +47,6 @@ function Register() {
   function onSubmit(values: IinitialValues, actions: FormikHelpers<IinitialValues>) {
     console.log(values);
   }
-
 
   return (
     <Fragment>
