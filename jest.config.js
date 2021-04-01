@@ -19,9 +19,12 @@ module.exports = {
   ],
   "testPathIgnorePatterns": ["<rootDir>/.next/", "<rootDir>/node_modules/"],
   "snapshotSerializers": ["enzyme-to-json/serializer"],
-  globals: {
+  "globals": {
     "ts-jest": {
       tsConfig: "<rootDir>/tsconfig.jest.json"
     }
-  }
+  },
+  "moduleNameMapper": {
+    '^.+\\.(css|less|scss)$': 'identity-obj-proxy'
+  },
 }
