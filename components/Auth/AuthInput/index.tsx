@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, memo } from 'react';
 import AuthError from '../AuthError';
 
 import styles from './AuthInput.module.scss';
@@ -58,4 +58,4 @@ function AuthInput({ placeholder, name, onChange, value, type = 'text', error }:
   )
 }
 
-export default AuthInput;
+export default memo(AuthInput);

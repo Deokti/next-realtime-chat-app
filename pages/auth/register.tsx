@@ -1,7 +1,7 @@
 import { Fragment, ChangeEvent, useState } from "react";
-import AuthForm from "../../components/AuthForm";
-import AuthInput from "../../components/AuthInput";
-import AuthRedirect from "../../components/AuthRedirect";
+import AuthForm from "../../components/Auth/AuthForm";
+import AuthInput from "../../components/Auth/AuthInput";
+import AuthRedirect from "../../components/Auth/AuthRedirect";
 import Button from "../../components/Button";
 import HeadTitle from "../../components/HeadTitle";
 import { PATH } from "../../config/path";

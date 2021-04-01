@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import Link from 'next/link'
 
 import styles from './AuthRedirect.module.scss';
@@ -15,4 +16,4 @@ function AuthRedirect({ children, href = '/' }: TAuthRedirect) {
   )
 }
 
-export default AuthRedirect;
+export default memo(AuthRedirect);
