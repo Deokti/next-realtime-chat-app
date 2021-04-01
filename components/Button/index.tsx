@@ -1,3 +1,4 @@
+import React, { memo } from 'react';
 import styles from './Button.module.scss';
 
 type TButton = {
@@ -37,6 +38,7 @@ function Button({
 }: TButton) {
 
   const getLoadingIconByType = LoadingIcon === Function ? <LoadingIcon /> : LoadingIcon;
+  const isRender = isLoading ? getLoadingIconByType : children;
 
   return (
     <button
@@ -58,9 +60,9 @@ function Button({
       disabled={isLoading}
       onClick={onClick}
     >
-      {isLoading ? getLoadingIconByType : children}
+      {isRender}
     </button>
   );
 }
 
-export default Button;
+export default memo(Button);
