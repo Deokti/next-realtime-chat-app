@@ -8,6 +8,7 @@ import HeadTitle from "../../components/HeadTitle";
 import { PATH } from "../../config/path";
 
 import * as yup from 'yup';
+import { PulseLoader } from "react-spinners";
 
 interface IInitialValues {
   email: string
@@ -66,6 +67,8 @@ function Login() {
           borderRadius={4}
           type="submit"
           disabled={!formik.dirty || !formik.isValid}
+          LoadingIcon={<PulseLoader color="#fff" size={10} />}
+          isLoading={false}
         >
           Войти
         </Button>

@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 import styles from './Button.module.scss';
 
-type TButton = {
-  children: string
+export type TButton = {
+  children?: string
   width?: number | string
   height?: number | string
   border?: string
@@ -10,12 +10,12 @@ type TButton = {
   backgroundColor?: string
   color?: string
   fontSize?: number
-  fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | number
+  fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
   borderRadius?: number
   onClick?: () => {}
   type?: 'button' | 'submit',
   isLoading?: boolean
-  LoadingIcon?: JSX.Element | null | Function
+  LoadingIcon?: JSX.Element | undefined
   disabled?: boolean
 }
 
@@ -37,12 +37,9 @@ function Button({
   disabled = false
 }: TButton) {
 
-  const getLoadingIconByType = LoadingIcon === Function ? <LoadingIcon /> : LoadingIcon;
-  const isRender = isLoading ? getLoadingIconByType : children;
-
   return (
     <button
-      className={`${styles.button} ${isLoading && styles.isLoading} ${disabled && styles.disabled}`}
+      className={`${styles.button} ${isLoading ? styles.isLoading : ''} ${disabled ? styles.disabled : ''}`.trim()}
       type={type}
       style={
         {
@@ -60,7 +57,7 @@ function Button({
       disabled={isLoading}
       onClick={onClick}
     >
-      {isRender}
+      {isLoading ? LoadingIcon : children}
     </button>
   );
 }
