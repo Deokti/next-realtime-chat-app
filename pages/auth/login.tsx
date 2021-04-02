@@ -5,17 +5,16 @@ import AuthInput from "../../components/Auth/AuthInput";
 import AuthRedirect from "../../components/Auth/AuthRedirect";
 import Button from "../../components/Button";
 import HeadTitle from "../../components/HeadTitle";
-import { PATH } from "../../config/path";
+import { ROUTE_PATH } from "../../config/route-path";
 
 import * as yup from 'yup';
 import { PulseLoader } from "react-spinners";
-
-interface IInitialValues {
-  email: string
-  password: string
-}
+import { ILogin } from "../../types/auth";
+import { auth } from "../../config/firebase";
+import { useAuth } from "../../hooks/useAuth";
 
 function Login() {
+  const { loading, error, onLoading, onSucsess, onRejection } = useAuth();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -23,7 +22,7 @@ function Login() {
     onSubmit: onSubmit,
   });
 
-  function initialValues(): IInitialValues {
+  function initialValues(): ILogin {
     return {
       email: '',
       password: ''
@@ -37,15 +36,23 @@ function Login() {
     });
   }
 
-  function onSubmit() {
-    console.log(formik.values);
+  function onSubmit({ email, password }: ILogin) {
+    onLoading();
+    signInWithEmailAndPassword({ email, password });
+  }
+
+  async function signInWithEmailAndPassword({ email, password }: ILogin) {
+    auth.signInWithEmailAndPassword(email, password)
+      .then(onSucsess)
+      .then(() => console.info('Пользователь вошёл в систему'))
+      .catch(onRejection)
   }
 
   return (
     <React.Fragment>
       <HeadTitle title="Авторизация" />
 
-      <AuthForm title="Войти" onSubmit={formik.handleSubmit}>
+      <AuthForm title="Войти" onSubmit={formik.handleSubmit} error={error}>
         <AuthInput
           placeholder="Email"
           name="email"
@@ -68,12 +75,12 @@ function Login() {
           type="submit"
           disabled={!formik.dirty || !formik.isValid}
           LoadingIcon={<PulseLoader color="#fff" size={10} />}
-          isLoading={false}
+          isLoading={loading}
         >
           Войти
         </Button>
 
-        <AuthRedirect href={PATH.register}>Ещё не зарегистрированы?</AuthRedirect>
+        <AuthRedirect href={ROUTE_PATH.register}>Ещё не зарегистрированы?</AuthRedirect>
       </AuthForm>
     </React.Fragment>
   )

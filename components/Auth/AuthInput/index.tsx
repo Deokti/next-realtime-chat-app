@@ -49,7 +49,7 @@ function AuthInput({ placeholder, name, onChange, value, type = 'text', error }:
           fontWeight={300}
           position="absolute"
           left={0}
-          bottom={-20}
+          bottom={-18}
         >
           {error}
         </AuthError>

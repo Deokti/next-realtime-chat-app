@@ -12,9 +12,23 @@ interface IAuthError {
   right?: number,
   top?: number,
   bottom?: number,
+  marginTop?: number
 }
 
-function AuthError({ children, fontWeight, fontSize, color = '#ff4460', display = 'block', textAlign = 'left' }: IAuthError): React.ReactElement<IAuthError> {
+function AuthError(
+  { children,
+    fontWeight,
+    fontSize,
+    color = '#ff4460',
+    display = 'block',
+    textAlign = 'left',
+    position,
+    left,
+    right,
+    top,
+    bottom,
+    marginTop
+  }: IAuthError): React.ReactElement<IAuthError> {
   return (
     <span
       style={{
@@ -22,7 +36,13 @@ function AuthError({ children, fontWeight, fontSize, color = '#ff4460', display 
         fontSize,
         color,
         display,
-        textAlign
+        textAlign,
+        position,
+        left,
+        right,
+        top,
+        bottom,
+        marginTop
       }}
     >
       {children}
