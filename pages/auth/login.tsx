@@ -1,8 +1,7 @@
 import { useFormik } from "formik";
 import React from "react";
-import AuthForm from "../../components/Auth/AuthForm";
-import AuthInput from "../../components/Auth/AuthInput";
-import AuthRedirect from "../../components/Auth/AuthRedirect";
+import { AuthForm, AuthRedirect, AuthInput } from '../../components/Auth';
+
 import Button from "../../components/Button";
 import HeadTitle from "../../components/HeadTitle";
 import { ROUTE_PATH } from "../../config/route-path";

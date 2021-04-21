@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import styles from './Button.module.scss';
 
-export type TButton = {
+export interface ButtonProps {
   children?: string
   width?: number | string
   height?: number | string
@@ -35,7 +35,7 @@ function Button({
   LoadingIcon,
   isLoading = false,
   disabled = false
-}: TButton) {
+}: ButtonProps) {
 
   return (
     <button

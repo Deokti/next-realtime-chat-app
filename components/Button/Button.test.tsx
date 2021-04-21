@@ -1,10 +1,11 @@
 import React from 'react';
-import Button, { TButton } from '../Button';
+import Button, { ButtonProps } from './index';
 import { shallow, ShallowWrapper } from 'enzyme';
+import { TComponentTest } from '../../types/testins';
 
-const button = (props?: TButton) => shallow(<Button {...props}>{props?.children}</Button>)
+const button = (props?: ButtonProps) => shallow(<Button {...props}>{props?.children}</Button>)
 
-const props: TButton = {
+const props: ButtonProps = {
   children: 'Тестовая кнопка',
   width: 250,
   height: 45,
@@ -21,7 +22,7 @@ const props: TButton = {
 }
 
 describe('Button component', () => {
-  let component: ShallowWrapper<any, Readonly<{}> | React.Component<{}, {}, any>>
+  let component: TComponentTest
   beforeEach(() => component = button());
 
   it('should Button component containg one button tag', () => {

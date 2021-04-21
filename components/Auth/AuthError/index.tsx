@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface IAuthError {
+interface AuthErrorProps {
   children?: string
   fontWeight?: 100 | 300 | 400 | 500 | 600 | 700 | 900
   fontSize?: number
@@ -28,7 +28,7 @@ function AuthError(
     top,
     bottom,
     marginTop
-  }: IAuthError): React.ReactElement<IAuthError> {
+  }: AuthErrorProps) {
   return (
     <span
       style={{
