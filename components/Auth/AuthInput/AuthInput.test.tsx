@@ -29,9 +29,6 @@ describe('AuthInput component', () => {
   it('shallow component NOT contains active class for (and with) empty value', () => {
     expect(component.find('span.actvie').length).toEqual(0);
   });
-
-  it('shallow component contains active class for (and with) empty value', () => { });
-
 });
 
 
