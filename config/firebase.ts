@@ -13,7 +13,15 @@ const firebaseConfig = {
   appId: "1:827568555119:web:b3b9ff3507163a2106399a"
 };
 
-const initializeFirebase = firebase.initializeApp(firebaseConfig);
+
+// Столкнулся с проблемой, что после перезагрузки страницы
+// может выдать ошибку FirebaseError: Firebase: Firebase App named '[DEFAULT]' already exists (app/duplicate-app).
+// Она связана с тем, что в проекте использоваться Next, что значит SSR - Рендер на стороне сервера
+// из-за чего инициализация происходила несколько раз, и таким образом дабы измебать, следует сделать проверку на то,
+// что иницилизации ещё не было, а если она была - вернуть app
+const initializeFirebase = !firebase.apps.length
+  ? firebase.initializeApp(firebaseConfig)
+  : firebase.app();
 
 // Аутентификация
 const auth = initializeFirebase.auth();

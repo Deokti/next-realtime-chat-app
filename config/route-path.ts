@@ -1,7 +1,7 @@
-const PATH = {
+const ROUTE_PATH = {
   login: '/auth/login',
   register: '/auth/register',
-  app: '/app'
+  app: '/chat'
 }
 
-export { PATH }
+export { ROUTE_PATH }

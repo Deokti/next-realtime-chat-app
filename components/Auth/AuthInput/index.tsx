@@ -12,17 +12,16 @@ import styles from './AuthInput.module.scss';
  * type: тип для input
  */
 
-type TAuthInput = {
-  placeholder: string
-  name: string
+export interface AuthInputProps {
+  placeholder?: string
+  name?: string
   onChange?: (value: ChangeEvent<HTMLInputElement>) => any
   value?: string
   type?: "text" | "password"
   error?: string
 }
 
-
-function AuthInput({ placeholder, name, onChange, value, type = 'text', error }: TAuthInput) {
+function AuthInput({ placeholder, name, onChange, value = '', type = 'text', error }: AuthInputProps) {
   const [emptyValue, setEmptyValue] = useState<boolean>(false);
 
   function onEmptyValue({ currentTarget }: ChangeEvent<HTMLInputElement>): void {
@@ -43,13 +42,13 @@ function AuthInput({ placeholder, name, onChange, value, type = 'text', error }:
         value={value}
       />
       <span className={`${styles.span} ${emptyValue && styles.active}`}>{placeholder}</span>
-      {error && (
+      {error && error.length > 0 && (
         <AuthError
           fontSize={11}
           fontWeight={300}
           position="absolute"
           left={0}
-          bottom={-20}
+          bottom={-18}
         >
           {error}
         </AuthError>
