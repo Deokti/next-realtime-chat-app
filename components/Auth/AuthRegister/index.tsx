@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import AuthForm from "../AuthForm";
 import AuthInput from "../AuthInput";
 import AuthRedirect from "../AuthRedirect";
@@ -18,7 +18,7 @@ import { DATABASE_REF } from "../../../config/database-ref";
 
 import { useAuth } from "../../../hooks/useAuth";
 
-function Register() {
+function Register(): React.ReactElement {
   const { loading, error, onLoading, onSucsess, onRejection } = useAuth();
 
   const formik = useFormik({
@@ -33,7 +33,7 @@ function Register() {
       email: '',
       password: '',
       passwordConfirm: ''
-    }
+    };
   }
 
   function validationSchema() {
@@ -42,13 +42,13 @@ function Register() {
       email: yup.string().email('Не корректный Email адресс!').required('Поле должно быть заполнено!'),
       password: yup.string().min(6, 'Пароль должен содержать не менее 6 символов').required('Поле должно быть заполнено!'),
       passwordConfirm: yup.string().oneOf([yup.ref('password')], 'Пароли не совпадают!').required('Поле должно быть заполнено!')
-    })
+    });
   }
 
-  function onSubmit(values: IRegister, actions: FormikHelpers<IRegister>) {
+  function onSubmit(values: IRegister, actions: FormikHelpers<IRegister>): void {
     createUserWithEmailAndPassword(values)
       .then(onSucsess)
-      .catch(onRejection)
+      .catch(onRejection);
   }
 
   async function createUserWithEmailAndPassword({ username, email, password }: IRegister) {
@@ -76,7 +76,7 @@ function Register() {
 
     database.ref(DATABASE_REF.USERS)
       .child(id)
-      .set(createdUser(user))
+      .set(createdUser(user));
   }
 
   function createdUser({ id, username, avatar, isOnline }: IUser): IUser {
@@ -85,7 +85,7 @@ function Register() {
       username,
       avatar,
       isOnline
-    }
+    };
   }
 
   return (
@@ -124,15 +124,11 @@ function Register() {
           error={formik.errors.passwordConfirm}
         />
 
-        <Button
-          LoadingIcon={<PulseLoader color="#fff" size={10} />}
-          isLoading={loading}
-          type="submit"
-          backgroundColor="#ff4460"
-          width="100%"
+        <Button 
+          size="full" 
           disabled={!formik.dirty || !formik.isValid}
-          height={40}
-          borderRadius={4}
+          LoadingIcon={<PulseLoader color="#fff" size={10} />}
+          loading={loading}
         >
           Регистрация
         </Button>
@@ -140,8 +136,7 @@ function Register() {
         <AuthRedirect href={ROUTE_PATH.login}>Уже зарегистрированы?</AuthRedirect>
       </AuthForm>
     </React.Fragment>
-
-  )
+  );
 }
 
 export default Register;
