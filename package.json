@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "stylelint": "stylelint \"**/*.scss\" --fix"
   },
   "dependencies": {
     "@types/md5": "^2.3.0",
@@ -14,6 +15,7 @@
     "@types/uuid": "^8.3.0",
     "browser-image-compression": "^1.0.14",
     "child_process": "^1.0.2",
+    "classnames": "^2.3.1",
     "firebase": "^8.3.1",
     "firebase-tools": "^9.8.0",
     "formik": "^2.2.6",
@@ -29,19 +31,27 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@types/classnames": "^2.3.1",
     "@types/enzyme": "^3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.6",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.36",
     "@types/react": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.26.0",
+    "@typescript-eslint/parser": "^4.26.0",
     "@welldone-software/why-did-you-render": "^6.1.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.1",
+    "eslint": "^7.28.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "node-sass": "5.0.0",
     "react-test-renderer": "^17.0.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-order-config-standard": "^0.1.3",
     "ts-jest": "^26.5.4",
     "typescript": "^4.2.3"
   },

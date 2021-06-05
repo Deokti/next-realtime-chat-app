@@ -1,9 +1,13 @@
 @import '../../../styles/colors.scss';
 
 .redirect {
-  display: block;
-  margin-top: 15px;
-  font-size: 12px;
-  color: $color-gray;
-  text-align: center;
+	display: block;
+
+	margin-top: 15px;
+
+	text-align: center;
+
+	color: $gray;
+
+	font-size: 12px;
 }

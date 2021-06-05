@@ -39,5 +39,5 @@ export function useAuth(): IUseAuth {
     onLoading,
     onSucsess,
     onRejection,
-  }
+  };
 }

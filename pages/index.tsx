@@ -1,14 +1,14 @@
-import Login from './auth/login'
+import Login from './auth/login';
 import Register from './auth/register';
 
-import styles from '../styles/Home.module.scss'
+import styles from '../styles/Home.module.scss';
 
-function Home() {
+function Home(): React.ReactElement {
   return (
     <main className={styles.app}>
-      <Register />
+      <Login />
     </main>
-  )
+  );
 }
 
 

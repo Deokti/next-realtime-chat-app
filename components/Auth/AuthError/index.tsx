@@ -1,53 +1,21 @@
 import React from 'react';
+import { AuthErrorProps } from './AuthError.props';
 
-interface AuthErrorProps {
-  children?: string
-  fontWeight?: 100 | 300 | 400 | 500 | 600 | 700 | 900
-  fontSize?: number
-  color?: string
-  display?: 'block' | 'inline' | 'flex' | 'inline-block'
-  textAlign?: 'left' | 'center' | 'right'
-  position?: 'relative' | 'absolute',
-  left?: number,
-  right?: number,
-  top?: number,
-  bottom?: number,
-  marginTop?: number
-}
+import styles from './AuthError.module.scss';
+import classnames from 'classnames';
 
-function AuthError(
-  { children,
-    fontWeight,
-    fontSize,
-    color = '#ff4460',
-    display = 'block',
-    textAlign = 'left',
-    position,
-    left,
-    right,
-    top,
-    bottom,
-    marginTop
-  }: AuthErrorProps) {
+function AuthError({ children, apperance, className, ...props }: AuthErrorProps): React.ReactElement {
   return (
     <span
-      style={{
-        fontWeight,
-        fontSize,
-        color,
-        display,
-        textAlign,
-        position,
-        left,
-        right,
-        top,
-        bottom,
-        marginTop
-      }}
+      className={classnames(styles.error, className, {
+        [styles.input]: apperance === 'input',
+        [styles.form]: apperance === 'form'
+      })}
+      {...props}
     >
       {children}
     </span>
-  )
+  );
 }
 
 export default AuthError;

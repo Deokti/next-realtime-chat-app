@@ -12,7 +12,7 @@ import { auth } from "../../../config/firebase";
 import { useAuth } from "../../../hooks/useAuth";
 import HeadTitle from "../../HeadTitle";
 
-function Login() {
+function Login(): React.ReactElement {
   const { loading, error, onLoading, onSucsess, onRejection } = useAuth();
 
   const formik = useFormik({
@@ -25,7 +25,7 @@ function Login() {
     return {
       email: '',
       password: ''
-    }
+    };
   }
 
   function validationSchema() {
@@ -44,7 +44,7 @@ function Login() {
     auth.signInWithEmailAndPassword(email, password)
       .then(onSucsess)
       .then(() => console.info('Пользователь вошёл в систему'))
-      .catch(onRejection)
+      .catch(onRejection);
   }
 
   return (
@@ -55,26 +55,24 @@ function Login() {
         <AuthInput
           placeholder="Email"
           name="email"
+          value={formik.values.email}
           onChange={formik.handleChange}
           error={formik.errors.email}
         />
-        {/* <AuthInput
+        <AuthInput
           placeholder="Пароль"
           type="password"
           name="password"
           error={formik.errors.password}
+          value={formik.values.password}
           onChange={formik.handleChange}
-        /> */}
+        />
 
-        <Button
-          backgroundColor="#ff4460"
-          width="100%"
-          height={40}
-          borderRadius={4}
-          type="submit"
+        <Button 
+          size="full" 
           disabled={!formik.dirty || !formik.isValid}
           LoadingIcon={<PulseLoader color="#fff" size={10} />}
-          isLoading={loading}
+          loading={loading}
         >
           Войти
         </Button>
@@ -82,7 +80,7 @@ function Login() {
         <AuthRedirect href={ROUTE_PATH.register}>Ещё не зарегистрированы?</AuthRedirect>
       </AuthForm>
     </React.Fragment>
-  )
+  );
 }
 
 export default Login;

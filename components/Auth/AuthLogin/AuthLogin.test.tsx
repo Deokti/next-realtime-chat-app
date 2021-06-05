@@ -10,6 +10,6 @@ describe('AuthLogin component', () => {
   });
 
   it('AuthLogin component render', () => {
-    expect(wrapper).not.toBeNull()
+    expect(wrapper).not.toBeNull();
   });
 });

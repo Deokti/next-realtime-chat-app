@@ -1,17 +1,21 @@
 // Получаем ошибку на английсвом
 // и в зависимости от теста отдаёт русский текст
-export function authTranslate(error: string) {
+export function authTranslate(error: string): string {
   switch (error) {
     case "The email address is already in use by another account.": {
-      return 'Адрес электронной почты уже используется другой учетной записью.'
+      return 'Адрес электронной почты уже используется другой учетной записью.';
     }
 
     case "The password is invalid or the user does not have a password.": {
-      return 'Не верный пароль.'
+      return 'Не верный пароль.';
+    }
+
+    case "There is no user record corresponding to this identifier. The user may have been deleted.": {
+      return 'Такой учётной записи нет. Возможно, пользователь был удален.';
     }
 
     case "Access to this account has been temporarily disabled due to many failed login attempts. You can immediately restore it by resetting your password or you can try again later.": {
-      return "Доступ к этой учетной записи был временно отключен из-за множества неудачных попыток входа в систему. Повторите попытку позже."
+      return "Доступ к этой учетной записи был временно отключен из-за множества неудачных попыток входа в систему. Повторите попытку позже.";
     }
 
     default: { return error; }

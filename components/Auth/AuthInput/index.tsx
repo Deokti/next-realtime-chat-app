@@ -15,10 +15,10 @@ import styles from './AuthInput.module.scss';
 export interface AuthInputProps {
   placeholder?: string
   name?: string
-  onChange?: (value: ChangeEvent<HTMLInputElement>) => any
+  onChange: (value: ChangeEvent<HTMLInputElement>) => unknown
   value?: string
   type?: "text" | "password"
-  error?: string
+  error?: string | undefined
 }
 
 function AuthInput({ placeholder, name, onChange, value = '', type = 'text', error }: AuthInputProps) {
@@ -36,25 +36,19 @@ function AuthInput({ placeholder, name, onChange, value = '', type = 'text', err
       <input
         type={type}
         className={styles.input}
-        name={name}
+        name={name || ''}
         onInput={onEmptyValue}
         onChange={onChange}
         value={value}
       />
       <span className={`${styles.span} ${emptyValue && styles.active}`}>{placeholder}</span>
       {error && error.length > 0 && (
-        <AuthError
-          fontSize={11}
-          fontWeight={300}
-          position="absolute"
-          left={0}
-          bottom={-18}
-        >
+        <AuthError apperance="input">
           {error}
         </AuthError>
       )}
     </label>
-  )
+  );
 }
 
 export default memo(AuthInput);

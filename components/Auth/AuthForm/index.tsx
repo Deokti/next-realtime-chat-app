@@ -1,15 +1,15 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, ReactNode } from 'react';
 import AuthError from '../AuthError';
 import styles from './AuthForm.module.scss';
 
 interface AuthFormProps {
   error?: string
   title: string
-  children: any
-  onSubmit?: (event: ChangeEvent<HTMLFormElement>) => void;
+  children: ReactNode,
+  onSubmit: (event: ChangeEvent<HTMLFormElement>) => void;
 }
 
-function AuthForm({ title, children, onSubmit, error = '' }: AuthFormProps) {
+function AuthForm({ title, children, onSubmit, error = '' }: AuthFormProps): React.ReactElement {
 
   return (
     <form className={styles.auth} onSubmit={onSubmit}>
@@ -22,25 +22,21 @@ function AuthForm({ title, children, onSubmit, error = '' }: AuthFormProps) {
           {children}
 
           {
-            /* Компонент с приёмом ошибки появлятеся здесь,
-            поскольку он испольуется в других компонентах, таких как login и register.
-            Таким образом перенеся его сюда - мы сокращяет написание лишнего кода */
+            /* 
+              Компонент с приёмом ошибки появлятеся здесь,
+              поскольку он испольуется в других компонентах, таких как login и register.
+              Таким образом перенеся его сюда - мы сокращяет написание лишнего кода 
+            */
           }
           {error.length > 0 && (
-            <AuthError
-              textAlign="center"
-              fontWeight={700}
-              fontSize={16}
-              marginTop={10}
-            >
+            <AuthError apperance="form">
               {error}
             </AuthError>
           )}
         </div>
       </div>
     </form>
-  )
-
+  );
 }
 
 export default AuthForm;
