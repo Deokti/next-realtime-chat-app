@@ -1,4 +1,4 @@
-import { authTranslate } from '../auth-translate';
+import { authTranslate } from './index';
 
 const emailAlreadyInUse = 'The email address is already in use by another account.';
 const inValidPassword = 'The password is invalid or the user does not have a password.';
