@@ -2,13 +2,9 @@ import React, { memo } from 'react';
 import Link from 'next/link';
 
 import styles from './AuthRedirect.module.scss';
+import { AuthRedirectProps } from './AuthRedirect.props';
 
-type TAuthRedirect = {
-  children: string
-  href?: string
-};
-
-function AuthRedirect({ children, href = '/' }: TAuthRedirect) {
+function AuthRedirect({ children, href = '/' }: AuthRedirectProps) {
   return (
     <Link href={href}>
       <a className={styles.redirect}>{children}</a>

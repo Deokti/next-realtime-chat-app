@@ -12,6 +12,6 @@ export {
   AuthLogin,
   AuthInput,
   AuthRedirect,
-}
+};
 
 

@@ -5,6 +5,5 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
   apperance?: 'green' | 'red' | 'transparent'
   disabled?: boolean
   size?: 'large' | 'default' | 'full'
-  LoadingIcon?: ReactNode
   loading: boolean
 }
