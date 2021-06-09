@@ -2,14 +2,9 @@ import React, { memo } from 'react';
 import styles from './Button.module.scss';
 import { ButtonProps } from './Button.props';
 import classnames from 'classnames';
+import { PulseLoader } from 'react-spinners';
 
-// --- Что должно содержаться в компоненте ---
-// 1. Передаваться дочерний элемент. 
-// 2. Должны быть определены базовые размеры, исходящие из макета
-// 3. Передаваться событие клика
-
-
-function Button({ children, apperance = 'green', disabled = false, className, size = 'default', loading, LoadingIcon, ...props }: ButtonProps): React.ReactElement {
+function Button({ children, apperance = 'green', disabled = false, className, size = 'default', loading, ...props }: ButtonProps): React.ReactElement {
 
   return (
     <button className={classnames(styles.button, className, {
@@ -20,10 +15,10 @@ function Button({ children, apperance = 'green', disabled = false, className, si
       [styles.large]: size === 'large',
       [styles.full]: size === 'full',
     })}
-    disabled={disabled}
-    {...props}
+      disabled={disabled}
+      {...props}
     >
-      {loading ? LoadingIcon : children}
+      {loading ? <PulseLoader color="#fff" size={10} /> : children}
     </button>
   );
 }

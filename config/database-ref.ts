@@ -2,4 +2,4 @@ export const DATABASE_REF = {
   USERS: 'USERS',
   MESSAGES: 'MESSAGES',
   CHANNELS: 'CHANNELS'
-}
+};

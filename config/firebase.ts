@@ -3,7 +3,6 @@ import "firebase/auth";
 import "firebase/database";
 import "firebase/storage";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyAgoco_q53tT1qpK8e7LsopqSlA7DxOXhg",
   authDomain: "react-next-realtime-app.firebaseapp.com",
@@ -12,7 +11,6 @@ const firebaseConfig = {
   messagingSenderId: "827568555119",
   appId: "1:827568555119:web:b3b9ff3507163a2106399a"
 };
-
 
 // Столкнулся с проблемой, что после перезагрузки страницы
 // может выдать ошибку FirebaseError: Firebase: Firebase App named '[DEFAULT]' already exists (app/duplicate-app).
@@ -31,7 +29,6 @@ const database = initializeFirebase.database();
 
 // Хранилище для файлов 
 const storage = initializeFirebase.storage();
-
 
 export default initializeFirebase;
 export { auth, database, storage };

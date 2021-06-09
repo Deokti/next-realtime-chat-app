@@ -9,7 +9,6 @@ import { ROUTE_PATH } from "../../../config/route-path";
 import * as yup from 'yup';
 import { useFormik, FormikHelpers } from 'formik';
 
-import { PulseLoader } from 'react-spinners';
 import { auth, database } from "../../../config/firebase";
 import { IRegister, IUser } from "../../../types/auth";
 
@@ -124,10 +123,9 @@ function Register(): React.ReactElement {
           error={formik.errors.passwordConfirm}
         />
 
-        <Button 
-          size="full" 
+        <Button
+          size="full"
           disabled={!formik.dirty || !formik.isValid}
-          LoadingIcon={<PulseLoader color="#fff" size={10} />}
           loading={loading}
         >
           Регистрация

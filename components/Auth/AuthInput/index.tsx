@@ -1,34 +1,17 @@
 import React, { useState, ChangeEvent, memo } from 'react';
 import AuthError from '../AuthError';
+import { AuthInputProps } from './AuthInput.props';
 
 import styles from './AuthInput.module.scss';
+import classnames from 'classnames';
 
-/**
- * -- TAuthInput --
- * placeholder: тестовая строка внутри input 
- * name: название input для динамиряеского получения ключа и значения
- * onChange: событие, принимает в сетя текст 
- * value: текущее значение input для создания контролируемого input
- * type: тип для input
- */
-
-export interface AuthInputProps {
-  placeholder?: string
-  name?: string
-  onChange: (value: ChangeEvent<HTMLInputElement>) => unknown
-  value?: string
-  type?: "text" | "password"
-  error?: string | undefined
-}
-
-function AuthInput({ placeholder, name, onChange, value = '', type = 'text', error }: AuthInputProps) {
+function AuthInput({ placeholder, name = '', onChange, value = '', type = 'text', error }: AuthInputProps): React.ReactElement {
   const [emptyValue, setEmptyValue] = useState<boolean>(false);
 
   function onEmptyValue({ currentTarget }: ChangeEvent<HTMLInputElement>): void {
-    const value = currentTarget.value;
+    const value = Boolean(currentTarget.value);
 
-    // Неявное преобразование к boolean
-    setEmptyValue(!!value);
+    setEmptyValue(value);
   }
 
   return (
@@ -36,12 +19,14 @@ function AuthInput({ placeholder, name, onChange, value = '', type = 'text', err
       <input
         type={type}
         className={styles.input}
-        name={name || ''}
+        name={name}
         onInput={onEmptyValue}
         onChange={onChange}
         value={value}
       />
-      <span className={`${styles.span} ${emptyValue && styles.active}`}>{placeholder}</span>
+      <span className={classnames(styles.span, { [styles.active]: emptyValue })}>
+        {placeholder}
+      </span>
       {error && error.length > 0 && (
         <AuthError apperance="input">
           {error}

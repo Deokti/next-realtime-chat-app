@@ -1,13 +1,8 @@
-import React, { ChangeEvent, ReactNode } from 'react';
+import React from 'react';
 import AuthError from '../AuthError';
 import styles from './AuthForm.module.scss';
+import { AuthFormProps } from './AuthForm.props';
 
-interface AuthFormProps {
-  error?: string
-  title: string
-  children: ReactNode,
-  onSubmit: (event: ChangeEvent<HTMLFormElement>) => void;
-}
 
 function AuthForm({ title, children, onSubmit, error = '' }: AuthFormProps): React.ReactElement {
 

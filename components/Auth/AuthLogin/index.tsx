@@ -6,7 +6,6 @@ import Button from "../../../components/Button";
 import { ROUTE_PATH } from "../../../config/route-path";
 
 import * as yup from 'yup';
-import { PulseLoader } from "react-spinners";
 import { ILogin } from "../../../types/auth";
 import { auth } from "../../../config/firebase";
 import { useAuth } from "../../../hooks/useAuth";
@@ -68,10 +67,9 @@ function Login(): React.ReactElement {
           onChange={formik.handleChange}
         />
 
-        <Button 
-          size="full" 
+        <Button
+          size="full"
           disabled={!formik.dirty || !formik.isValid}
-          LoadingIcon={<PulseLoader color="#fff" size={10} />}
           loading={loading}
         >
           Войти
