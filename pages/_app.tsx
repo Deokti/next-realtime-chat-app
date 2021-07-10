@@ -1,13 +1,10 @@
 import React from 'react';
-import '../styles/globals.scss'
+import { AppProps } from 'next/app';
+import '../styles/globals.scss';
 
 
-function App({ Component, pageProps }: any) {
-  return (
-    <React.Fragment>
-      <Component {...pageProps} />
-    </React.Fragment>
-  )
+function App({ Component, pageProps }: AppProps): React.ReactElement {
+  return <Component {...pageProps} />;
 }
 
-export default App
+export default App;
