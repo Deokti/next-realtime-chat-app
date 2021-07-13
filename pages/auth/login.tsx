@@ -10,6 +10,8 @@ import { ILogin } from "../../types/auth";
 import { auth } from "../../config/firebase";
 import { useAuth } from "../../hooks/useAuth";
 import HeadTitle from "../../components/HeadTitle";
+import { redirectToPage } from '../../utils/redirect-to-page';
+import { notification } from '../../utils/notification';
 
 function Login(): React.ReactElement {
   const { loading, error, onLoading, onSucsess, onRejection } = useAuth();
@@ -42,7 +44,10 @@ function Login(): React.ReactElement {
   async function signInWithEmailAndPassword({ email, password }: ILogin) {
     auth.signInWithEmailAndPassword(email, password)
       .then(onSucsess)
-      .then(() => console.info('Пользователь вошёл в систему'))
+      .then(() => {
+        notification({ content: 'Вы вошли в систему', appearance: 'success' });
+        redirectToPage(ROUTE_PATH.app);
+      })
       .catch(onRejection);
   }
 

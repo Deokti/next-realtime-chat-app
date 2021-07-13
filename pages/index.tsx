@@ -1,9 +1,9 @@
 import styles from '../styles/Home.module.scss';
 import { useEffect } from 'react';
 import { auth, database } from '../config/firebase';
-import Router from 'next/router';
 import { ROUTE_PATH } from '../config/route-path';
 import { DATABASE_REF } from '../config/database-ref';
+import { redirectToPage } from '../utils/redirect-to-page';
 
 function Home(): React.ReactElement {
   useEffect(onAuthStateChanged, [onAuthStateChanged]);
@@ -11,22 +11,18 @@ function Home(): React.ReactElement {
   function onAuthStateChanged(): void {
     auth.onAuthStateChanged(loggedUser => {
       if (loggedUser === null) {
-        return redirectToLogin();
+        return redirectToPage(ROUTE_PATH.login);
       }
 
       return getUserByUid(loggedUser.uid);
     });
   }
 
-  function redirectToLogin(): Promise<boolean> {
-    return Router.push(ROUTE_PATH.login);
-  }
-
   function getUserByUid(uid: string) {
-    database.ref(DATABASE_REF.USERS)
+    return database.ref(DATABASE_REF.USERS)
       .child(uid)
       .on('value', (snap) => {
-        console.log(snap.val());
+        console.log('snap:', snap.val());
       });
   }
 
@@ -36,6 +32,5 @@ function Home(): React.ReactElement {
     </main>
   );
 }
-
 
 export default Home;
