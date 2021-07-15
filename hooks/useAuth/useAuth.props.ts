@@ -1,4 +1,4 @@
-import { IAuthError } from "../../types/auth";
+import { IAuthError } from "../../interfaces/auth";
 
 export interface IUseAuth {
 	loading: boolean

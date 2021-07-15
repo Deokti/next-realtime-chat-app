@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { IAuthError } from '../../types/auth';
+import { IAuthError } from '../../interfaces/auth';
 import { authTranslate } from '../../utils/auth-translate';
 import { IUseAuth } from './useAuth.props';
 

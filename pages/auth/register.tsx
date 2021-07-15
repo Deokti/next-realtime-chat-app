@@ -10,12 +10,14 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 import { auth, database } from "../../config/firebase";
-import { IRegister, IUser } from "../../types/auth";
+import { IRegister, IUser } from "../../interfaces/auth";
 
 import md5 from 'md5';
 import { DATABASE_REF } from "../../config/database-ref";
 
 import { useAuth } from "../../hooks/useAuth";
+import { notification } from "../../utils/notification";
+import { redirectToPage } from "../../utils/redirect-to-page";
 
 function Register(): React.ReactElement {
   const { loading, error, onLoading, onSucsess, onRejection } = useAuth();
@@ -47,7 +49,14 @@ function Register(): React.ReactElement {
   function onSubmit(values: IRegister): void {
     createUserWithEmailAndPassword(values)
       .then(onSucsess)
+      .then(onMessage)
       .catch(onRejection);
+  }
+
+  function onMessage(): void {
+    notification({ content: 'Вы зарегистрированы', appearance: 'success' });
+    notification({ content: 'Вы вошли в систему', appearance: 'success' });
+    redirectToPage(ROUTE_PATH.app);
   }
 
   async function createUserWithEmailAndPassword({ username, email, password }: IRegister) {
@@ -63,7 +72,7 @@ function Register(): React.ReactElement {
 
       await saveUserToDatabase({
         id: createdUser.user.uid,
-        username: (createdUser.user.displayName) as string,
+        username: createdUser.user.displayName as string,
         avatar: createdUser.user.photoURL as string,
         isOnline: false
       });
@@ -125,7 +134,7 @@ function Register(): React.ReactElement {
 
         <Button
           size="full"
-          disabled={!formik.dirty || !formik.isValid}
+          disabled={loading || (!formik.dirty || !formik.isValid)}
           loading={loading}
         >
           Регистрация

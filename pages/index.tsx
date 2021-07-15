@@ -1,11 +1,16 @@
 import styles from '../styles/Home.module.scss';
 import { useEffect } from 'react';
-import { auth, database } from '../config/firebase';
+import { auth } from '../config/firebase';
 import { ROUTE_PATH } from '../config/route-path';
-import { DATABASE_REF } from '../config/database-ref';
 import { redirectToPage } from '../utils/redirect-to-page';
+import { connect } from 'react-redux';
+import { getUserByUid } from '../actions/auth';
 
-function Home(): React.ReactElement {
+export interface HomeProps {
+  getUserByUid: (uid: string) => void;
+}
+
+function Home({ getUserByUid }: HomeProps): React.ReactElement {
   useEffect(onAuthStateChanged, [onAuthStateChanged]);
 
   function onAuthStateChanged(): void {
@@ -18,14 +23,6 @@ function Home(): React.ReactElement {
     });
   }
 
-  function getUserByUid(uid: string) {
-    return database.ref(DATABASE_REF.USERS)
-      .child(uid)
-      .on('value', (snap) => {
-        console.log('snap:', snap.val());
-      });
-  }
-
   return (
     <main className={styles.app}>
       Здесь будет что-то другое
@@ -33,4 +30,4 @@ function Home(): React.ReactElement {
   );
 }
 
-export default Home;
+export default connect(null, { getUserByUid })(Home);
