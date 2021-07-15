@@ -18,7 +18,7 @@ export interface IRegister {
 }
 
 export interface IAuthError {
-  a: any
+  a: unknown
   code: string
   message: string
 }

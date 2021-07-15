@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 import { ROUTE_PATH } from "../../config/route-path";
 
 import * as yup from 'yup';
-import { ILogin } from "../../types/auth";
+import { ILogin } from "../../interfaces/auth";
 import { auth } from "../../config/firebase";
 import { useAuth } from "../../hooks/useAuth";
 import HeadTitle from "../../components/HeadTitle";
@@ -44,11 +44,13 @@ function Login(): React.ReactElement {
   async function signInWithEmailAndPassword({ email, password }: ILogin) {
     auth.signInWithEmailAndPassword(email, password)
       .then(onSucsess)
-      .then(() => {
-        notification({ content: 'Вы вошли в систему', appearance: 'success' });
-        redirectToPage(ROUTE_PATH.app);
-      })
+      .then(onMessage)
       .catch(onRejection);
+  }
+
+  function onMessage(): void {
+    notification({ content: 'Вы вошли в систему', appearance: 'success' });
+    redirectToPage(ROUTE_PATH.app);
   }
 
   return (
