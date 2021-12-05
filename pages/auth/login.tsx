@@ -7,15 +7,9 @@ import { ROUTE_PATH } from "../../config/route-path";
 
 import * as yup from 'yup';
 import { ILogin } from "../../interfaces/auth";
-import { auth } from "../../config/firebase";
-import { useAuth } from "../../hooks/useAuth";
 import HeadTitle from "../../components/HeadTitle";
-import { redirectToPage } from '../../utils/redirect-to-page';
-import { notification } from '../../utils/notification';
 
 function Login(): React.ReactElement {
-  const { loading, error, onLoading, onSucsess, onRejection } = useAuth();
-
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -36,28 +30,16 @@ function Login(): React.ReactElement {
     });
   }
 
-  function onSubmit({ email, password }: ILogin) {
-    onLoading();
-    signInWithEmailAndPassword({ email, password });
+  function onSubmit() {
+    console.log('Submit');
   }
 
-  async function signInWithEmailAndPassword({ email, password }: ILogin) {
-    auth.signInWithEmailAndPassword(email, password)
-      .then(onSucsess)
-      .then(onMessage)
-      .catch(onRejection);
-  }
-
-  function onMessage(): void {
-    notification({ content: 'Вы вошли в систему', appearance: 'success' });
-    redirectToPage(ROUTE_PATH.app);
-  }
 
   return (
     <React.Fragment>
       <HeadTitle title="Авторизация" />
 
-      <AuthForm title="Войти" onSubmit={formik.handleSubmit} error={error}>
+      <AuthForm title="Войти" onSubmit={formik.handleSubmit}>
         <AuthInput
           placeholder="Email"
           name="email"
@@ -76,8 +58,6 @@ function Login(): React.ReactElement {
 
         <Button
           size="full"
-          disabled={loading || (!formik.dirty || !formik.isValid)}
-          loading={loading}
           type="submit"
         >
           Войти

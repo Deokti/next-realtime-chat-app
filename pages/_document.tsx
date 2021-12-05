@@ -9,11 +9,7 @@ class DocumentApp extends Document {
   render(): React.ReactElement {
     return (
       <Html>
-        <Head lang="ru">
-          <meta name="viewport" content="viewport-fit=cover" />
-          <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
-          <title>Чат на React</title>
-        </Head>
+        <Head lang="ru"></Head>
         <body>
           <Main />
           <NextScript />

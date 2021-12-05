@@ -1,6 +1,6 @@
 import AuthError from './AuthError';
 import AuthForm from './AuthForm';
-import AuthInput from './AuthInput';
+import { AuthInput } from './AuthInput';
 import AuthRedirect from './AuthRedirect';
 
 export {

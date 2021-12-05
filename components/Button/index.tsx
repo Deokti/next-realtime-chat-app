@@ -4,7 +4,7 @@ import { ButtonProps } from './Button.props';
 import classnames from 'classnames';
 import { PulseLoader } from 'react-spinners';
 
-function Button({ children, apperance = 'green', disabled = false, className, size = 'default', loading, ...props }: ButtonProps): React.ReactElement {
+function Button({ children, apperance = 'green', disabled = false, className, size = 'default', loading = false, ...props }: ButtonProps): React.ReactElement {
 
   return (
     <button className={classnames(styles.button, className, {

@@ -5,5 +5,5 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
   apperance?: 'green' | 'red' | 'transparent'
   disabled?: boolean
   size?: 'large' | 'default' | 'full'
-  loading: boolean
+  loading?: boolean
 }
