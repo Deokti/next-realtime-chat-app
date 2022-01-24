@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthForm from "../../components/Auth/AuthForm";
 import { AuthInput } from "../../components/Auth/AuthInput";
 import AuthRedirect from "../../components/Auth/AuthRedirect";

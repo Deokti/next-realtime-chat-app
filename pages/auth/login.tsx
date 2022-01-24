@@ -10,6 +10,7 @@ import { ILogin } from "../../interfaces/auth";
 import HeadTitle from "../../components/HeadTitle";
 
 function Login(): React.ReactElement {
+
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -33,7 +34,6 @@ function Login(): React.ReactElement {
   function onSubmit() {
     console.log('Submit');
   }
-
 
   return (
     <React.Fragment>

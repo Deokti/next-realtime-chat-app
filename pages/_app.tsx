@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import { store } from '../store';
 import '../styles/globals.scss';
 
-
 function App({ Component, pageProps }: AppProps): React.ReactElement {
   return (
     <Provider store={store}>

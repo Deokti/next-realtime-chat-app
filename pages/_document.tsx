@@ -9,7 +9,9 @@ class DocumentApp extends Document {
   render(): React.ReactElement {
     return (
       <Html>
-        <Head lang="ru"></Head>
+        <Head lang="ru">
+
+        </Head>
         <body>
           <Main />
           <NextScript />
