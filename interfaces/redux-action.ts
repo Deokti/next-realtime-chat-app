@@ -5,5 +5,5 @@ export interface ActionType {
 }
 
 export interface AuthAction extends ActionType {
-	payload: IUser
+	payload: IUser;
 }
