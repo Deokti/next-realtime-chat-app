@@ -8,10 +8,12 @@
 	],
 	"rules": {
 		"indentation": [
-			"tab"
+			2
 		],
 		"color-hex-case": "upper",
 		"color-function-notation": "legacy",
-		"alpha-value-notation": "number"
+		"alpha-value-notation": "number",
+		"selector-class-pattern": null,
+		"at-rule-no-unknown": null
 	}
 }
