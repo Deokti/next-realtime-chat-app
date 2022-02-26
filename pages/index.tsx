@@ -1,17 +1,13 @@
 import styles from "../styles/Home.module.scss";
 import { FC, ReactElement } from "react";
-import Login from "./auth/login";
-import Register from "./auth/register";
-
-export interface HomeProps {
-	getUserByUid: (uid: string) => void;
-}
+import Login from "./login";
+import "@fontsource/roboto";
+import "../assets/scss/theme.css";
 
 const Home: FC = (): ReactElement => {
 	return (
 		<main className={styles.app}>
 			<Login />
-			<Register />
 		</main>
 	);
 };

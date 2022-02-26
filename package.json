@@ -11,10 +11,15 @@
 		"lint:fix": "eslint ./** --fix"
 	},
 	"dependencies": {
+		"@emotion/react": "^11.8.1",
+		"@emotion/styled": "^11.8.1",
+		"@fontsource/roboto": "^4.5.3",
+		"@mui/material": "^5.4.3",
 		"axios": "^0.24.0",
 		"browser-image-compression": "^1.0.17",
 		"classnames": "^2.3.1",
 		"formik": "^2.2.9",
+		"macro-css": "^1.0.5",
 		"md5": "^2.3.0",
 		"next": "12.0.7",
 		"react": "17.0.2",
@@ -47,7 +52,6 @@
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"identity-obj-proxy": "^3.0.0",
-		"jest": "^27.4.3",
 		"node-sass": "6.0.1",
 		"prettier": "^2.5.1",
 		"react-test-renderer": "^17.0.2",
