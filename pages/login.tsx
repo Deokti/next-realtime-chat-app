@@ -48,8 +48,6 @@ function Login(): React.ReactElement {
     dispatch(setLoading(true));
   }
 
-  console.log(formik.values);
-
   return (
     <React.Fragment>
       <HeadTitle title="Войти в аккаунт" />
