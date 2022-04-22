@@ -8,7 +8,8 @@
 
   color: var(--font-color);
   border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(var(--achromatic-color-rgba), 0.4);
+  background-color: transparent;
 
   &:focus {
     outline: none;
@@ -18,6 +19,15 @@
     transform: translateY(-20px);
 
     font-size: 12px;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus, {
+    transition: background-color 5000s ease-in-out 0s;
+
+    box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0) inset;
+    -webkit-text-fill-color: var(--font-color);
   }
 }
 
@@ -30,7 +40,7 @@
 
   pointer-events: none;
 
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(var(--achromatic-color-rgba), 0.3);
 
   font-size: 14px;
 }
@@ -58,53 +68,43 @@
 }
 
 .eye {
-  position: absolute;
+  position: absolute !important;
   top: 5px;
   right: 5px;
 
-  overflow: hidden;
+  overflow: hidden !important;
 
   width: 18px;
   height: 18px;
 
   cursor: pointer;
 
-  &::before,
-  &::after {
+  &:focus { outline: none; }
+
+  .invisible,
+  .visible {
     position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    content: "";
+    top: 50%;
+    left: 50%;
 
     transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transform: translate(-50%, -50%);
 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  }
-
-  &::before {
-    background-image: url("../../assets/Eye.svg");
-  }
-
-  &::after {
-    transform: translateY(100%);
-
-    background-image: url("../../assets/EyeInvisible.svg");
+    fill: rgba(var(--achromatic-color-rgba), 0.4);
   }
 }
 
+.eye .invisible {
+  transform: translate(-50%, -150%);
+}
+
 .passwordVisible {
-  &::before {
-    transform: translateY(-100%);
+  .visible {
+    transform: translate(-50%, 150%);
   }
 
-  &::after {
-    transform: translateY(0);
+  .invisible {
+    transform: translate(-50%, -50%);
   }
 }
 

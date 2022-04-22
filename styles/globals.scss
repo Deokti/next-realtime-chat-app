@@ -2,11 +2,19 @@
 
 html,
 body {
-	font-family: Roboto, sans-serif;
+  overflow: hidden;
+
+  background-color: var(--bg-color);
+
+  font-family: Roboto, sans-serif !important;
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 
-	color: inherit;
+  color: inherit;
+}
+
+.body {
+  background-color: var(--bg-color);
 }

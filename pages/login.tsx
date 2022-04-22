@@ -4,78 +4,91 @@ import React from "react";
 import * as yup from "yup";
 import { ILogin } from "../interfaces/auth";
 import HeadTitle from "../components/HeadTitle";
-import { AuthWrapper } from "../HOC/AuthWrapper";
+import { AuthWrapper } from "../views/AuthWrapper";
 import { AuthInput } from "../components/AuthInput";
 import { Button } from "@mui/material";
+import { getApp, useAppDispatch, useAppSelector } from "../hooks/redux";
+import { appSlice } from "../store/reducers/app";
 
 function Login(): React.ReactElement {
-	const formik = useFormik({
-		initialValues: initialValues(),
-		validationSchema: validationSchema(),
-		onSubmit: onSubmit,
-	});
+  const { setLoading } = appSlice.actions;
+  const { isLoading } = useAppSelector(getApp);
 
-	function initialValues(): ILogin {
-		return {
-			email: "",
-			password: "",
-		};
-	}
+  const dispatch = useAppDispatch();
 
-	// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-	function validationSchema() {
-		return yup.object().shape({
-			email: yup
-				.string()
-				.email("Не корректный Email адресс!")
-				.required("Поле должно быть заполнено!"),
-			password: yup
-				.string()
-				.min(6, "Пароль должен содержать не менее 6 символов")
-				.required("Поле должно быть заполнено!"),
-		});
-	}
+  const formik = useFormik({
+    initialValues: initialValues(),
+    validationSchema: validationSchema(),
+    onSubmit,
+  });
 
-	function onSubmit(): void {
-		console.log("Submit");
-	}
+  function initialValues(): ILogin {
+    return {
+      email: "",
+      password: "",
+    };
+  }
 
-	return (
-		<React.Fragment>
-			<HeadTitle title="Войти в аккаунт" />
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  function validationSchema() {
+    return yup.object().shape({
+      email: yup
+        .string()
+        .email("Не корректный Email адресс!")
+        .required("Поле должно быть заполнено!"),
+      password: yup
+        .string()
+        .min(6, "Пароль должен содержать не менее 6 символов")
+        .required("Поле должно быть заполнено!"),
+    });
+  }
 
-			<AuthWrapper
-				title="войти в аккаунт"
-				description="для продолжения - войдите в свой аккаунт"
-				redirect="/register"
-			>
-				<form>
-					<AuthInput
-						appearance="email"
-						label="Е-маил"
-						name="email"
-						error={formik.errors.email}
-						onChange={formik.handleChange}
-					/>
-					<AuthInput
-						appearance="password"
-						label="Пароль"
-						name="password"
-						error={formik.errors.password}
-						onChange={formik.handleChange}
-					/>
-					<Button
-						variant="contained"
-						fullWidth
-						className="mt-20"
-						style={{ borderRadius: 0, boxShadow: "none", color: "#FFF" }}
-					>
-						Войти
-					</Button>
-				</form>
-			</AuthWrapper>
-		</React.Fragment>
-	);
+  function onSubmit(values: ILogin): void {
+    console.log("Submit", values);
+    dispatch(setLoading(true));
+  }
+
+  console.log(formik.values);
+
+  return (
+    <React.Fragment>
+      <HeadTitle title="Войти в аккаунт" />
+
+      <AuthWrapper
+        title="войти в аккаунт"
+        description="для продолжения - войдите в свой аккаунт"
+        redirect="/register"
+        isLoading={isLoading}
+      >
+        <form onSubmit={formik.handleSubmit}>
+          <AuthInput
+            appearance="email"
+            label="Е-маил"
+            name="email"
+            error={formik.errors.email}
+            onChange={formik.handleChange}
+          />
+          <AuthInput
+            appearance="password"
+            label="Пароль"
+            name="password"
+            error={formik.errors.password}
+            onChange={formik.handleChange}
+          />
+          <Button
+            variant="contained"
+            fullWidth
+            type="submit"
+            className="mt-20"
+            style={{ borderRadius: 0, boxShadow: "none", color: "#FFF" }}
+            disabled={!formik.dirty && formik.isValid}
+          >
+            Войти
+          </Button>
+        </form>
+      </AuthWrapper>
+    </React.Fragment>
+  );
 }
 
 export default Login;
