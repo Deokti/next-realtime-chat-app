@@ -64,6 +64,7 @@ function Login(): React.ReactElement {
             appearance="email"
             label="Е-маил"
             name="email"
+            type="email"
             error={formik.errors.email}
             onChange={formik.handleChange}
           />

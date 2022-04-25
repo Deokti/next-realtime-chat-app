@@ -67,6 +67,7 @@ function Register(): React.ReactElement {
             appearance="text"
             label="Имя пользователя"
             name="username"
+            type="text"
             onChange={formik.handleChange}
             error={formik.errors.username}
           />
@@ -74,6 +75,7 @@ function Register(): React.ReactElement {
             appearance="email"
             label="Е-маил"
             name="email"
+            type="email"
             onChange={formik.handleChange}
             error={formik.errors.email}
           />
