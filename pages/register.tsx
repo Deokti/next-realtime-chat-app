@@ -75,7 +75,6 @@ function Register(): React.ReactElement {
             appearance="email"
             label="Е-маил"
             name="email"
-            type="email"
             onChange={formik.handleChange}
             error={formik.errors.email}
           />
@@ -92,6 +91,7 @@ function Register(): React.ReactElement {
             type="submit"
             className="mt-20"
             style={{ borderRadius: 0, boxShadow: "none", color: "#FFF" }}
+            disabled={!(formik.isValid && formik.dirty)}
           >
             Регистрация
           </Button>

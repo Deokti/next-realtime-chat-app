@@ -64,7 +64,6 @@ function Login(): React.ReactElement {
             appearance="email"
             label="Е-маил"
             name="email"
-            type="email"
             error={formik.errors.email}
             onChange={formik.handleChange}
           />
@@ -81,7 +80,7 @@ function Login(): React.ReactElement {
             type="submit"
             className="mt-20"
             style={{ borderRadius: 0, boxShadow: "none", color: "#FFF" }}
-            disabled={!formik.dirty && formik.isValid}
+            disabled={!(formik.isValid && formik.dirty)}
           >
             Войти
           </Button>
