@@ -1,6 +1,8 @@
+import { ROUTER } from "./../../config/ROUTER";
 import { ReactNode } from "react";
 
-export type TRedirect = "/login" | "/register";
+export type TLinkRedirect = "/login" | "/register";
+export type TRedirect = [link: ROUTER, text: string];
 
 export interface AuthWrapperProps {
   title: string;

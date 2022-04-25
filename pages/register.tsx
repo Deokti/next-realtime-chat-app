@@ -5,11 +5,12 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 
 import { IRegister } from "../interfaces/auth";
-import { AuthWrapper } from "../views/AuthWrapper";
 import { AuthInput } from "../components/AuthInput";
 import { Button } from "@mui/material";
 import { useAppSelector, getApp, useAppDispatch } from "../hooks/redux";
 import { appSlice } from "../store/reducers/app";
+import { ROUTER } from "../config/ROUTER";
+import { AuthWrapper } from "../components/AuthWrapper";
 
 function Register(): React.ReactElement {
   const { setLoading } = appSlice.actions;
@@ -58,7 +59,7 @@ function Register(): React.ReactElement {
       <AuthWrapper
         title="Зарегистрировать аккаунт"
         description="после регистрации вы окажетесь на главной странице"
-        redirect="/login"
+        redirect={[ROUTER.LOGIN, "Уже зарегистрированы?"]}
         isLoading={isLoading}
       >
         <form onSubmit={formik.handleSubmit}>

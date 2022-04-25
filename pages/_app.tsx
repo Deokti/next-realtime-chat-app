@@ -8,24 +8,19 @@ import "../theme/theme.css";
 import { ThemeProvider } from "@emotion/react";
 import { MUI } from "../theme/MUI";
 import { store } from "../store";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { APP_TRANSITION_PAGE } from "../config/FRAMER";
 
 function App({ Component, pageProps, router }: AppProps): React.ReactElement {
   return (
     <Provider store={store}>
       <ThemeProvider theme={MUI}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0 }}
-          transition={{
-            duration: 0.2,
-          }}
-          key={router.route}
-        >
-          <Component {...pageProps} />
-          <Toaster />
-        </motion.div>
+        <AnimatePresence exitBeforeEnter>
+          <motion.div {...APP_TRANSITION_PAGE} key={router.route}>
+            <Component {...pageProps} />
+            <Toaster />
+          </motion.div>
+        </AnimatePresence>
       </ThemeProvider>
     </Provider>
   );

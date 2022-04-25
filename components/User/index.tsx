@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from "./User.module.scss";
 import cn from "classnames";
 import { IUser } from "../../interfaces/auth";
-import { UserProps } from "./user.props";
+import { UserProps } from "./User.props";
 
 export const User = (props: UserProps): React.ReactElement => {
   const { user, isSelected } = props;

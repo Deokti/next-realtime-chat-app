@@ -4,11 +4,12 @@ import React from "react";
 import * as yup from "yup";
 import { ILogin } from "../interfaces/auth";
 import HeadTitle from "../components/HeadTitle";
-import { AuthWrapper } from "../views/AuthWrapper";
 import { AuthInput } from "../components/AuthInput";
 import { Button } from "@mui/material";
 import { getApp, useAppDispatch, useAppSelector } from "../hooks/redux";
 import { appSlice } from "../store/reducers/app";
+import { AuthWrapper } from "../components/AuthWrapper";
+import { ROUTER } from "../config/ROUTER";
 
 function Login(): React.ReactElement {
   const { setLoading } = appSlice.actions;
@@ -55,7 +56,7 @@ function Login(): React.ReactElement {
       <AuthWrapper
         title="войти в аккаунт"
         description="для продолжения - войдите в свой аккаунт"
-        redirect="/register"
+        redirect={[ROUTER.REGISTER, "Зарегистрироваться"]}
         isLoading={isLoading}
       >
         <form onSubmit={formik.handleSubmit}>

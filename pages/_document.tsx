@@ -6,7 +6,6 @@ import Document, {
   DocumentContext,
   DocumentInitialProps,
 } from "next/document";
-import { useAppTheme } from "../hooks/useAppTheme";
 
 class DocumentApp extends Document {
   static async getInitialProps(
@@ -20,7 +19,7 @@ class DocumentApp extends Document {
     return (
       <Html>
         <Head lang="ru"></Head>
-        <body className="body">
+        <body>
           <Main />
           <NextScript />
         </body>
