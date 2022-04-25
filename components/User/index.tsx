@@ -1,9 +1,10 @@
-import { Avatar, Badge } from "@mui/material";
+import { Avatar } from "@mui/material";
 import * as React from "react";
 import styles from "./User.module.scss";
 import cn from "classnames";
 import { IUser } from "../../interfaces/auth";
 import { UserProps } from "./User.props";
+import { StyledBadge } from "./StyledBadge";
 
 export const User = (props: UserProps): React.ReactElement => {
   const { user, isSelected } = props;
@@ -32,15 +33,13 @@ export const User = (props: UserProps): React.ReactElement => {
 
 const UserBridge = ({ user }: { user: IUser }): React.ReactElement => {
   return (
-    <>
-      <Badge
-        overlap="circular"
-        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-        color={user.isOnline ? "success" : "error"}
-        variant="dot"
-      >
-        <Avatar alt={user.username} src={user.avatar} />
-      </Badge>
-    </>
+    <StyledBadge
+      overlap="circular"
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+      color={user.isOnline ? "success" : "error"}
+      variant="dot"
+    >
+      <Avatar alt={user.username} src={user.avatar} />
+    </StyledBadge>
   );
 };
