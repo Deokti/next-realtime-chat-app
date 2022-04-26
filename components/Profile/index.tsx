@@ -1,4 +1,4 @@
-import { Avatar, Button, Typography } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import React from "react";
 import { TEST_USER } from "../../config/TEST_DATA";
 import styles from "./Profile.module.scss";

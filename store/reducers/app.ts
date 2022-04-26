@@ -7,14 +7,10 @@ interface IApp {
 }
 
 const getBaseValueDarkTheme = (): boolean => {
-  console.log(LocalStorage.get(STORAGE_KEY.isDarkTheme));
-
   const getValue = LocalStorage.get(STORAGE_KEY.isDarkTheme);
   const isBool = typeof getValue === "boolean" ? getValue : false;
   return isBool;
 };
-
-console.log(getBaseValueDarkTheme());
 
 const initialState: IApp = {
   isDarkTheme: getBaseValueDarkTheme(),
