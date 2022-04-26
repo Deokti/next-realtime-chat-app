@@ -1,0 +1,112 @@
+.wrapper {
+  position: relative;
+}
+
+.writable {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    z-index: 1;
+    top: 44%;
+    left: 20px;
+
+    content: "Написать сообщение...";
+    transition: all 0.2s linear;
+    transform: translateY(-50%);
+    pointer-events: none;
+
+    color: rgba(var(--secondary-color-rgb), 0.5);
+
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  &:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+  }
+
+  &.isValue::before {
+    transform: translateX(50px) translateY(-50%);
+
+    opacity: 0;
+  }
+}
+
+.textarea {
+  width: 100%;
+  min-height: 60px !important;
+  padding: 15px 130px 15px 20px;
+
+  resize: none;
+
+  color: #14142B;
+  border: 1px solid transparent;
+
+  border-radius: 10px;
+
+  background: var(--bg-field);
+
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15));
+}
+
+.icons {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+
+  display: flex;
+  align-items: center;
+}
+
+.fill {
+  fill: rgba(#FCFCFC, 0.7) !important;
+}
+
+.stroke {
+  margin-left: 2px;
+
+  transform: rotate(90deg);
+  stroke: rgba(#FCFCFC, 0.7) !important;
+}
+
+.button {
+  overflow: hidden;
+
+  width: 40px;
+  height: 40px;
+
+  border: none;
+  border-radius: 9px;
+
+  background-color: var(--primary-color);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    .fill {
+      fill: rgba(#FCFCFC, 1) !important;
+    }
+
+    .stroke {
+      &:hover {
+        stroke: rgba(#FCFCFC, 1) !important;
+      }
+    }
+  }
+}
+
+.icon {
+  margin-right: 10px;
+
+  cursor: pointer;
+  fill: rgba(var(--secondary-color-rgb), 0.6);
+}

@@ -9,7 +9,7 @@ import { Container, Typography } from "@mui/material";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Spinner } from "../Spinner";
-import { SHOW_SPINNER, animationFromLeftToRight } from "../../config/FRAMER";
+import { SHOW_AND_HIDE, animationFromLeftToRight } from "../../config/FRAMER";
 
 export const AuthWrapper = (props: AuthWrapperProps): React.ReactElement => {
   const { description, redirect, title, children, isLoading } = props;
@@ -18,7 +18,7 @@ export const AuthWrapper = (props: AuthWrapperProps): React.ReactElement => {
     <React.Fragment>
       <AnimatePresence>
         {isLoading && (
-          <motion.div {...SHOW_SPINNER}>
+          <motion.div {...SHOW_AND_HIDE}>
             <Spinner />
           </motion.div>
         )}
