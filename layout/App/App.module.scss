@@ -1,0 +1,24 @@
+.app {
+  display: grid;
+  grid-template-rows: 80px 100%;
+  grid-template-columns: 390px 1fr;
+  /* stylelint-disable-next-line declaration-block-no-redundant-longhand-properties */
+  grid-template-areas:
+    "sidepanel header"
+    "sidepanel chat";
+
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidepanel {
+  grid-area: sidepanel;
+}
+
+.chat {
+  grid-area: chat;
+}

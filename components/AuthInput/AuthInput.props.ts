@@ -1,10 +1,6 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from "react";
+import { DefaultInputProps } from "../../interfaces/extends.props";
 
-export interface AuthInputProps
-  extends DetailedHTMLProps<
-    InputHTMLAttributes<HTMLInputElement>,
-    HTMLInputElement
-  > {
+export interface AuthInputProps extends DefaultInputProps {
   appearance: "email" | "password" | "text";
   isVisiblePassword?: boolean;
   label: string;

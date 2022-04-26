@@ -15,3 +15,14 @@ export const TEST_MESSAGE: IMessage = {
   timestamp: 1650909402860,
   isWatched: false,
 };
+
+export const TEST_USERS: IUser[] = [
+  TEST_USER,
+  {
+    _id: "2",
+    avatar:
+      "https://avatars.mds.yandex.net/get-images-cbir/1766990/S4WFpIPTEEOIugOigGVBsg5960/ocr",
+    isOnline: true,
+    username: "Имя Фамилия",
+  },
+];

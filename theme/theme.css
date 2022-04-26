@@ -13,6 +13,9 @@
   --achromatic-color-rgba: 0, 0, 0;
   --message-bg: #FCFCFC;
   --message-bg-creator: #6C90FF;
+  --input-field: #F3F3F3;
+  --input-placeholder: #C6C6C6;
+  --input-text: #C6C6C6;
 }
 
 [data-theme="dark"] {
@@ -25,9 +28,12 @@
   --error-color: #F44336;
   --bg-field: #212121;
   --error-color-rgb: 244, 67, 54;
-  --chat-item-hover: #FEFEFE;
-  --chat-item-active: #F9F9F9;
+  --chat-item-hover: #F3F3F30D;
+  --chat-item-active: #F3F3F31A;
   --achromatic-color-rgba: 255, 255, 255;
   --message-bg: #212121;
   --message-bg-creator: #414C6F;
+  --input-field: #181818;
+  --input-placeholder: #C6C6C666;
+  --input-text: #676767;
 }

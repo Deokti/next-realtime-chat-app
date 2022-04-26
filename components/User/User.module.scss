@@ -10,8 +10,6 @@
 
   border-radius: 4px;
 
-  background-color: #FFF;
-
   font-family: Roboto, sans-serif;
 
   &:hover {
@@ -35,14 +33,14 @@
 .name {
   margin: 0;
 
-  color: #14142B;
+  color: var(--font-color);
 
   font-size: 18px;
   line-height: 21px;
 }
 
 .time {
-  color: #8191A9;
+  color: rgba(var(--secondary-color-rgb), 0.4);
 
   font-size: 9px;
   line-height: 9px;
@@ -57,7 +55,7 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 
-  color: #8191A9;
+  color: rgba(var(--secondary-color-rgb), 0.4);
 
   font-size: 12px;
   line-height: 14px;
