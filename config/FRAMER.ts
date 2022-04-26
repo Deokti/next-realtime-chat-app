@@ -12,6 +12,18 @@ export const SHOW_AND_HIDE = {
   transition: { delay: 0.5 },
 };
 
+export const EMOJI_VISIBLE = {
+  initial: { opacity: 0, scale: 0, x: 150, y: 150 },
+  animate: {
+    opacity: 1,
+    scale: 1,
+    x: 0,
+    y: 0,
+  },
+  exit: { opacity: 0, scale: 0, x: 150, y: 150 },
+  transition: { duration: 0.2 },
+};
+
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const animationShowAndHide = ({ delay = 0, duration = 0 }) => {
   return {

@@ -23,11 +23,6 @@
     line-height: 18px;
   }
 
-  &:focus {
-    border-color: var(--secondary-color);
-    outline: none;
-  }
-
   &.isValue::before {
     transform: translateX(50px) translateY(-50%);
 
@@ -36,6 +31,9 @@
 }
 
 .textarea {
+  overflow: hidden;
+
+  box-sizing: border-box;
   width: 100%;
   min-height: 60px !important;
   padding: 15px 130px 15px 20px;
@@ -43,8 +41,7 @@
   resize: none;
 
   color: #14142B;
-  border: 1px solid transparent;
-
+  border: none;
   border-radius: 10px;
 
   background: var(--bg-field);
@@ -54,6 +51,10 @@
   font-weight: 400;
   line-height: 26px;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.15));
+
+  &:focus-visible {
+    outline-color: var(--secondary-color);
+  }
 }
 
 .icons {
@@ -109,4 +110,10 @@
 
   cursor: pointer;
   fill: rgba(var(--secondary-color-rgb), 0.6);
+}
+
+.emoji {
+  position: absolute;
+  right: 90px;
+  bottom: 60px;
 }

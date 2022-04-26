@@ -13,7 +13,12 @@ export default {
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const Template: ComponentStory<typeof SendMessage> = (
   args: SendMessageProps,
-) => <SendMessage {...args} />;
+) => (
+  <SendMessage
+    {...args}
+    style={{ position: "absolute", bottom: "0", width: "98%" }}
+  />
+);
 
 export const SendMessageDefault = Template.bind({});
 

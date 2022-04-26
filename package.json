@@ -23,6 +23,7 @@
     "browser-image-compression": "^1.0.17",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
+    "emoji-picker-react": "^3.5.1",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.1",
     "macro-css": "^1.0.5",

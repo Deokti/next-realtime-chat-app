@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { IEmojiData } from "emoji-picker-react";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export interface SendMessageProps
@@ -7,4 +8,7 @@ export interface SendMessageProps
   HTMLTextAreaElement
   > {
   value: string;
+  isEmojiVisible?: boolean;
+  onEmojiVisible?: () => void;
+  onEmojiClick: (event: React.MouseEvent, data: IEmojiData) => void;
 }
