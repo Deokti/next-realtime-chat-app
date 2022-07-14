@@ -7,17 +7,10 @@ import { useFormik } from "formik";
 import { IRegister } from "../interfaces/auth";
 import { AuthInput } from "../components/AuthInput";
 import { Button } from "@mui/material";
-import { useAppSelector, getApp, useAppDispatch } from "../hooks/redux";
-import { appSlice } from "../store/reducers/app";
 import { ROUTER } from "../config/ROUTER";
 import { AuthWrapper } from "../components/AuthWrapper";
 
 function Register(): React.ReactElement {
-  const { setLoading } = appSlice.actions;
-  const { isLoading } = useAppSelector(getApp);
-
-  const dispatch = useAppDispatch();
-
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -32,7 +25,6 @@ function Register(): React.ReactElement {
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   function validationSchema() {
     return yup.object().shape({
       username: yup.string().required("Поле должно быть заполнено!"),
@@ -49,7 +41,6 @@ function Register(): React.ReactElement {
 
   function onSubmit(values: IRegister): void {
     console.log("Регистрация:", values);
-    dispatch(setLoading(true));
   }
 
   return (
@@ -60,7 +51,7 @@ function Register(): React.ReactElement {
         title="Зарегистрировать аккаунт"
         description="после регистрации вы окажетесь на главной странице"
         redirect={[ROUTER.LOGIN, "Уже зарегистрированы?"]}
-        isLoading={isLoading}
+        isLoading={false}
       >
         <form onSubmit={formik.handleSubmit}>
           <AuthInput

@@ -11,7 +11,6 @@ export default {
   component: Message,
 } as ComponentMeta<typeof Message>;
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const Template: ComponentStory<typeof Message> = (args: MessageProps) => (
   <Message isCreator={false} {...args} />
 );

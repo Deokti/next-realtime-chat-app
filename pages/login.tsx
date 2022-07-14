@@ -6,17 +6,10 @@ import { ILogin } from "../interfaces/auth";
 import HeadTitle from "../components/HeadTitle";
 import { AuthInput } from "../components/AuthInput";
 import { Button } from "@mui/material";
-import { getApp, useAppDispatch, useAppSelector } from "../hooks/redux";
-import { appSlice } from "../store/reducers/app";
 import { AuthWrapper } from "../components/AuthWrapper";
 import { ROUTER } from "../config/ROUTER";
 
 function Login(): React.ReactElement {
-  const { setLoading } = appSlice.actions;
-  const { isLoading } = useAppSelector(getApp);
-
-  const dispatch = useAppDispatch();
-
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: validationSchema(),
@@ -30,7 +23,6 @@ function Login(): React.ReactElement {
     };
   }
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   function validationSchema() {
     return yup.object().shape({
       email: yup
@@ -46,7 +38,6 @@ function Login(): React.ReactElement {
 
   function onSubmit(values: ILogin): void {
     console.log("Submit", values);
-    dispatch(setLoading(true));
   }
 
   return (
@@ -57,7 +48,7 @@ function Login(): React.ReactElement {
         title="войти в аккаунт"
         description="для продолжения - войдите в свой аккаунт"
         redirect={[ROUTER.REGISTER, "Зарегистрироваться"]}
-        isLoading={isLoading}
+        isLoading={false}
       >
         <form onSubmit={formik.handleSubmit}>
           <AuthInput

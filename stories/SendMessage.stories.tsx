@@ -10,7 +10,6 @@ export default {
   component: SendMessage,
 } as ComponentMeta<typeof SendMessage>;
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const Template: ComponentStory<typeof SendMessage> = (
   args: SendMessageProps,
 ) => (

@@ -11,7 +11,6 @@ export default {
   component: User,
 } as ComponentMeta<typeof User>;
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const Template: ComponentStory<typeof User> = (args: UserProps) => (
   <User {...args} />
 );

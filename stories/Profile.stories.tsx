@@ -9,7 +9,6 @@ export default {
   component: Profile,
 } as ComponentMeta<typeof Profile>;
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 const Template: ComponentStory<typeof Profile> = () => <Profile />;
 
 export const ProfileDefault = Template.bind({});

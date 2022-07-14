@@ -24,7 +24,6 @@ export const EMOJI_VISIBLE = {
   transition: { duration: 0.2 },
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const animationShowAndHide = ({ delay = 0, duration = 0 }) => {
   return {
     ...SHOW_AND_HIDE,
@@ -32,7 +31,6 @@ export const animationShowAndHide = ({ delay = 0, duration = 0 }) => {
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const animationFromLeftToRight = (delay: number) => {
   return {
     initial: { x: -100, opacity: 0 },

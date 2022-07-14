@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import HeadTitle from "../../components/HeadTitle";
 import { TEST_USER } from "../../config/TEST_DATA";
+import app from "../../store/app";
 import { Chat } from "../Chat";
 import { Header } from "../Header";
 import { SidePanel } from "../SidePanel";
@@ -15,7 +16,10 @@ export const App = (): ReactElement => {
         avatar={{ alt: TEST_USER.username, src: TEST_USER.avatar }}
       />
       <SidePanel className={styles.sidepanel} />
-      <Chat className={styles.chat} />
+      {/* <Chat className={styles.chat} /> */}
+      <div className={styles.chat}>
+        <button onClick={() => app.changeDarkTheme()}>Change Theme</button>
+      </div>
     </div>
   );
 };
